@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card bg-light mb-2">
+            <div class="card-header">Payment Plan</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="morgageAmount" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="The amount you expect to borrow from your financial institution. It is calculated as the purchase price of your home, minus the down payment plus any applicable mortgage loan insurance premium you have to pay."
+                                popoverTitle="Mortgage Amount">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Mortgage Amount:
+                        </label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <p-inputNumber [(ngModel)]="model.mortgageAmount" name="mortgageAmount" mode="currency"
+                                    currency="CAD" locale="en-US" [min]="0.00" [max]="1000000000"
+                                    (onBlur)="onModelChange()">
+                                </p-inputNumber>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="interestRate" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right" ngbPopover="Annual interest rate for this mortgage."
+                                popoverTitle="Interest Rate">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Interest Rate:</label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <p-inputNumber [(ngModel)]="model.interestRate" name="interestRate" mode="decimal"
+                                    [minFractionDigits]="2" [maxFractionDigits]="2" [min]="0.01" [max]="99.99"
+                                    suffix="%" (onBlur)="onModelChange()"></p-inputNumber>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="amortizationPeriod" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="The number of years and months over which you will repay this loan. The most common amortization period is 25 years. Not to be confused with the term of your loan, which is the duration of the loan agreement you signed with your financial institution and that has to be renewed regularly. Terms are generally for 1 to 10 years."
+                                popoverTitle="Amortization Period">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Amortization Period:</label>
+                        <div class="col-sm-3" style="padding-right: 0px !important">
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="amortizationYears"
+                                    [(ngModel)]="model.amortizationYears" name="amortizationYears"
+                                    (change)="onModelChange()">
+                                    <option *ngFor="let amortizationYearsOption of amortizationYearsOptions"
+                                        value={{amortizationYearsOption.value}}>{{amortizationYearsOption.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-3" style="padding-left: 0px !important">
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="amortizationMonths"
+                                    [(ngModel)]="model.amortizationMonths" name="amortizationMonths"
+                                    (change)="onModelChange()">
+                                    <option *ngFor="let amortizationMonthsOption of amortizationMonthsOptions"
+                                        value={{amortizationMonthsOption.value}}>{{amortizationMonthsOption.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="paymentFrequency" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="By choosing an accelerated payment frequency, you can reduce your amortization period and save thousands of dollars in interest in the long run. For example, the accelerated bi-weekly payment allows you to pay half of your monthly payment every two weeks. You will therefore make 26 payments a year, the equivalent of one extra monthly payment a year."
+                                popoverTitle="Payment Frequency">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Payment Frequency:</label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="paymentFrequency" [(ngModel)]="model.paymentFrequency"
+                                    name="paymentFrequency" (change)="onModelChange()">
+                                    <option *ngFor="let paymentFrequencyOption of paymentFrequencyOptions"
+                                        value={{paymentFrequencyOption.value}}>{{paymentFrequencyOption.label}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="term" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right" ngbPopover="The number of term years." popoverTitle="Term">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Term:</label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="paymentFrequencyYears" [(ngModel)]="model.term"
+                                    name="term" (change)="onModelChange()">
+                                    <option *ngFor="let termOption of termOptions" value={{termOption.value}}>
+                                        {{termOption.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card bg-light mb-2">
+            <div class="card-header">Prepayment Plan</div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="morgageAmount" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="Amount that you will prepay on your mortgage. This amount will be applied to the mortgage principal balance, at a frequency of prepayments that you determine."
+                                popoverTitle="Prepayment Amount">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Prepayment Amount:
+                        </label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <p-inputNumber [(ngModel)]="model.prepaymentAmount" name="prepaymentAmount"
+                                    mode="currency" currency="CAD" locale="en-US" [min]="0.00" [max]="1000000000"
+                                    (onBlur)="onModelChange()">
+                                </p-inputNumber>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="paymentFrequency" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="The frequency under which you will make prepayments on your mortgage. The options are one time payment, yearly and the same as regular payment."
+                                popoverTitle="Prepayment Frequency">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Prepayment Frequency:</label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="paymentFrequency"
+                                    [(ngModel)]="model.prepaymentFrequency" name="paymentFrequency">
+                                    <option *ngFor="let prepaymentFrequencyOption of prepaymentFrequencyOptions"
+                                        value={{prepaymentFrequencyOption.value}}>{{prepaymentFrequencyOption.label}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="startWithPayment" class="col-sm-5 col-form-label">
+                            <a href="#" placement="right"
+                                ngbPopover="This is the payment number that your prepayments will begin with. For a one time payment, this is the payment number that the single prepayment will be included in. All prepayments of principal are assumed to be received by your lender in time to be included in the following month's interest calculation."
+                                popoverTitle="Start With Payment">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            Start With Payment:</label>
+                        <div class="col-sm-7">
+                            <div class="input-group mb-3">
+                                <p-inputNumber [(ngModel)]="model.startWithPayment" name="startWithPayment" [min]="1"
+                                    [max]="9999" (onBlur)="onModelChange()"></p-inputNumber>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card text-white bg-primary mb-2">
+            <div class="card-body" style="text-align: center">
+                Your <b>{{paymentFrequencyLabel}}</b> Payment will be:<br><br>
+                <h3>{{ mortgagePayment | currency }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
