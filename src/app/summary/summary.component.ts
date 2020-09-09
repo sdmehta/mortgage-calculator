@@ -1,5 +1,5 @@
-import { SummaryModel } from './../summary.model';
-import { CalculatorService } from './../calculator.service';
+import { SummaryModel } from '../summary.model';
+import { CalculatorService } from '../calculator.service';
 import { Component, OnChanges, OnInit, Input } from '@angular/core';
 import { CalculatorModel } from '../caculator.model';
 

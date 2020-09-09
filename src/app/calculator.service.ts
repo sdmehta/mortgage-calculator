@@ -12,7 +12,7 @@ export class CalculatorService {
 
   calculateMonthlyPayment(model: CalculatorModel): number {
     const step1 = model.mortgageAmount;
-    const step2 = model.amortizationYears;// + this.model.amortizationMonths / 12;
+    const step2 = model.amortizationYears;
     const step3 = model.interestRate;
     const step4 = step3 / 100;
     const step5 = step2 * 12;
