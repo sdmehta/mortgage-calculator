@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CalculatorService } from './../calculator.service';
+import { CalculatorService } from '../calculator.service';
 import { CalculatorModel } from '../caculator.model';
 
 @Component({
