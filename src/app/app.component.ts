@@ -6,7 +6,6 @@ import { CalculatorModel } from './caculator.model';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'mortgage-calculator';
   calculatorModel: CalculatorModel;
   trigger = true;
 
